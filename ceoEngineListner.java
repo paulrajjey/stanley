@@ -13,6 +13,8 @@ import org.kie.api.runtime.KieSession;
 
 public class ceoEngineListner implements AgendaEventListener{
 
+	private ResponseHander responseHanlde = ResponseHander.getInstance();
+	
 	public void matchCreated(MatchCreatedEvent event) {
 		
 		((KieSession)event.getKieRuntime()).fireAllRules();
@@ -30,7 +32,9 @@ public class ceoEngineListner implements AgendaEventListener{
 
 	public void afterMatchFired(AfterMatchFiredEvent event) {
 		// TODO Auto-generated method stub
-		
+		//event.getMatch().getObjects();
+		//event.getMatch().
+		responseHanlde.addResponse(event);
 	}
 
 	public void agendaGroupPopped(AgendaGroupPoppedEvent event) {
